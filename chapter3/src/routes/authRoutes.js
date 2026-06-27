@@ -2,7 +2,7 @@ import express from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import db from '../db.js'
-import { cache } from 'react'
+
 
 
 const router = express.Router()
@@ -20,11 +20,18 @@ try{
        const defaultTodo = `Hello add your first todo!`
        const insertTodo = db.prepare(`INSERT INTO todos(user_id,task) VALUES (?,?)`)
        insertTodo.run(result.lastInsertRowid,defaultTodo)
-   }catch(err){
-    console.log(err.message)
-    res.sendStatus(503)
-              }
+      
+       const token = jwt.sign({id:result.lastInsertRowid}, process.env.JWT_SECRET , {expiresIn : '24h'})
+}catch (err) {
+    console.error("FULL ERROR:");
+    console.error(err);
+    console.error("MESSAGE:", err.message);
 
+    return res.status(503).json({
+        error: err.message
+    });
+}
+              
 res.sendStatus(201)
 }            )
 

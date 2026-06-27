@@ -5,6 +5,12 @@ import { fileURLToPath } from "url";
 import authRoutes from "./routes/authRoutes.js";
 import todoRoutes from "./routes/todoRoutes.js";
 
+import dotenv from "dotenv";
+dotenv.config();
+
+console.log("JWT_SECRET =", process.env.JWT_SECRET);
+console.log("PORT =", process.env.PORT);
+
 const app = express();
 const PORT = process.env.PORT || 7003;
 
