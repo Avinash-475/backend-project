@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 
 import authRoutes from "./routes/authRoutes.js";
 import todoRoutes from "./routes/todoRoutes.js";
-
+import authMiddlewre from './MiddleWare/authMiddlewre.js'
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -25,8 +25,8 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-app.use("/auth", authRoutes);
-app.use("/todos", todoRoutes);
+app.use('/auth', authRoutes);
+app.use('/todos',authMiddlewre ,todoRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server has started on PORT: ${PORT}`);

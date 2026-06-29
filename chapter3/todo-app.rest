@@ -7,8 +7,8 @@ POST http://localhost:7003/auth/register
 Content-Type: application/json
 
 {
-  "username": "Akosh12345",
-  "password": "222443"
+  "username": "Avinash",
+  "password": "123123"
 }
 
 
@@ -19,4 +19,41 @@ Content-Type: application/json
 {
   "username": "Avinash",
   "password": "123123"
+}
+
+###
+GET http://localhost:7003/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzgyNzE4Njg3LCJleHAiOjE3ODI4MDUwODd9.83hCPV8BFLkyduVJcAGEfatETK8zmf-LJbpa4tmjvJY
+
+###
+POST http://localhost:7003/todos
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzgyNzE4Njg3LCJleHAiOjE3ODI4MDUwODd9.83hCPV8BFLkyduVJcAGEfatETK8zmf-LJbpa4tmjvJY
+
+{
+  "task" : "Finish coding the projects"
+}
+
+###
+
+
+###
+PUT http://localhost:7003/todos/4
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzgyNzMxNjAwLCJleHAiOjE3ODI4MTgwMDB9.VkUkb9m_SeZYc6chzFIRO8TVjWM_WgZAhawepY7OPgg
+
+
+{
+    "task": "Finish coding the projects",
+    "completed": 1
+}
+
+###
+
+DELETE http://localhost:7003/todos/4
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzgyNzMyMDEzLCJleHAiOjE3ODI4MTg0MTN9.JEu7MOOjW4nGiyc5m0LURpXJqcHPBzhrLZZW7BC5VFA
+ 
+
+{
+  "message": "Todo deleted successfully"
 }
